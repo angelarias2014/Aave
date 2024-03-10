@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aave/core-v3": "^1.19.3",
     "@rainbow-me/rainbowkit": "^1.3.5",
     "next": "^14.0.4",
     "react": "^18.2.0",

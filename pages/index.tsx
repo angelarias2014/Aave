@@ -2,6 +2,23 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { getNetwork, readContract } from '@wagmi/core';
+
+
+const { contracts } = require('../constants/contracts');
+const testbutton = async () => {
+  const ProtocolDataProviderArtifact = require('@aave/core-v3/artifacts/contracts/interfaces/IPoolAddressesProvider.sol/IPoolAddressesProvider.json');
+  const PoolDataProviderAddress = await getDesployedContract("getPoolDataProvider");
+  const reserves = await readContract({
+    address: PoolDataProviderAddress,
+    abi: ProtocolDataProviderArtifact.abi,
+    functionName: "getAllReservesTokens",
+  })
+}
+
+const getDesployedContract = async (contractName: string) => {
+
+}
 
 const Home: NextPage = () => {
   return (
@@ -70,6 +87,7 @@ const Home: NextPage = () => {
             </p>
           </a>
         </div>
+        <button className="bg-blue-400" onClick={testbutton}>Pruebas</button>
       </main>
 
       <footer className={styles.footer}>
